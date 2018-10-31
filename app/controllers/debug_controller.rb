@@ -1,8 +1,6 @@
 class DebugController < ApplicationController
-  def mecab
+  def neologd
     text = params[:p]
-    mecab = Natto::MeCab.new(dicdir: ENV['MECAB_DIC_DIR'])
-    res = mecab.parse(text)
-    render plain: res
+    render json: parse(text)
   end
 end
